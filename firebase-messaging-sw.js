@@ -16,9 +16,9 @@ const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage(function (payload) {
     console.log('Pesan diterima di background:', payload);
-    const notificationTitle = payload.data.title;
+    const notificationTitle = payload.notification.title;
     const notificationOptions = {
-        body: payload.data.body,
+        body: payload.notification.body,
         icon: '/firebase-logo.png'
     };
 
