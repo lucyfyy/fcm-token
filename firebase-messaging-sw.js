@@ -1,7 +1,6 @@
 importScripts('https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/10.11.0/firebase-messaging-compat.js');
 
-// Inisialisasi Firebase di SW
 firebase.initializeApp({
     apiKey: "AIzaSyBpTCGN-qbcDKmZC-CEVN4cr4i6UT34ff0",
     authDomain: "presensi-app-db6fb.firebaseapp.com",
@@ -23,4 +22,8 @@ messaging.onBackgroundMessage(function (payload) {
     };
 
     self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+self.addEventListener('fetch', function(event) {
+  // Empty fetch handler to keep SW alive
 });
