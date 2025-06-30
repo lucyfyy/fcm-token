@@ -41,8 +41,8 @@ if ('serviceWorker' in navigator) {
             messaging.onMessage((payload) => {
                 console.log('Pesan diterima di foreground:', payload);
 
-                new Notification(payload.data.title, {
-                    body: payload.data.body,
+                new Notification(payload.notification.title, {
+                    body: payload.notification.body,
                     icon: '/firebase-logo.png'
                 });
             });
