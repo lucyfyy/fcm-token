@@ -14,6 +14,10 @@ if ('serviceWorker' in navigator) {
                 document.body.innerHTML += `<p>Notification permission: ${permission}</p>`;
 
                 if (permission === 'granted') {
+                    new Notification('Test Notification', {
+                        body: 'This is a local test notification!',
+                    });
+
                     messaging.getToken({
                         vapidKey: 'BEwxm_l_WS47YDUNahaH2-OWfGkzQ6nM5ozm1vGu0X8dQw0KQ39fVI2LzhiLKweWo-qOaZLlJdhsNBuf5ezHfXY',
                         serviceWorkerRegistration: registration,
