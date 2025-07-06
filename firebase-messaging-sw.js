@@ -13,15 +13,18 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage(function (payload) {
-    console.log('Pesan diterima di background:', payload);
-    const notificationTitle = payload.body.title;
-    const notificationOptions = {
-        body: payload.body.body,
-        icon: '/firebase-logo.png'
-    };
+messaging.onBackgroundMessage(function(payload) {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
 
-    self.registration.showNotification(notificationTitle, notificationOptions);
+  // Since your backend sends data messages, access title and body from payload.data
+  const notificationTitle = payload.data.title || 'Notification';
+  const notificationOptions = {
+    body: payload.data.body || '',
+    icon: '/firebase-logo.png',  // You can customize this icon path
+  };
+
+  // Show notification
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
 self.addEventListener('fetch', function(event) {
