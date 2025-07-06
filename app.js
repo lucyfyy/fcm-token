@@ -14,9 +14,6 @@ if ('serviceWorker' in navigator) {
                 document.body.innerHTML += `<p>Notification permission: ${permission}</p>`;
 
                 if (permission === 'granted') {
-                    new Notification('Test Notification', {
-                        body: 'This is a local test notification!',
-                    });
 
                     messaging.getToken({
                         vapidKey: 'BEwxm_l_WS47YDUNahaH2-OWfGkzQ6nM5ozm1vGu0X8dQw0KQ39fVI2LzhiLKweWo-qOaZLlJdhsNBuf5ezHfXY',
@@ -40,15 +37,6 @@ if ('serviceWorker' in navigator) {
                     console.warn('Izin notifikasi ditolak.');
                     document.body.innerHTML += `<p style="color:orange;">Izin notifikasi ditolak.</p>`;
                 }
-            });
-
-            messaging.onMessage((payload) => {
-                console.log('Pesan diterima di foreground:', payload);
-
-                new Notification(payload.notification.title, {
-                    body: payload.notification.body,
-                    icon: '/firebase-logo.png'
-                });
             });
 
         }).catch((err) => {
