@@ -6,16 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FCM Web Token</title>
 
-  <script>document.getElementById('btnRequest').addEventListener('click', () => {
-      Notification.requestPermission().then(permission => {
-        alert('Notification permission is ' + permission);
-        if (permission === 'granted') {
-          new Notification('Thanks for allowing notifications!');
-        }
-      });
-    });
-  </script>
-
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-messaging-compat.js"></script>
